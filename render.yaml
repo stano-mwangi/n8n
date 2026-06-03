@@ -10,20 +10,10 @@ services:
         value: production
       - key: NODE_OPTIONS
         value: --max-old-space-size=2048
-      - key: N8N_EDITOR_BASE_URL
-        fromService:
-          type: web
-          name: n8n
-          property: renderUrl
-      - key: WEBHOOK_URL
-        fromService:
-          type: web
-          name: n8n
-          property: renderUrl
-      - key: DB_TYPE
-        value: sqlite
       - key: DB_SQLITE_PATH
         value: /data/database.sqlite
+      - key: DB_TYPE
+        value: sqlite
       - key: GENERIC_OAUTH_ENABLED
         value: "false"
       - key: N8N_SECURE_COOKIE
