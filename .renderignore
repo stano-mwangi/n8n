@@ -1,0 +1,56 @@
+# Git files
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+docs/
+.github/
+
+# Development files
+.vscode/
+.devcontainer/
+.editorconfig
+.prettierrc.js
+
+# Build artifacts
+dist/
+build/
+.turbo/
+*.log
+
+# Testing
+__tests__/
+*.test.ts
+*.spec.ts
+.playwright/
+playwright-report/
+test-results/
+
+# Dependencies - will be reinstalled
+node_modules/
+
+# Environment files (will be set in Render)
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.circleci/
+
+# Docker files (not needed for Render build)
+docker/
+Dockerfile
+.dockerignore

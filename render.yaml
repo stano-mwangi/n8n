@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: n8n
+    env: node
+    plan: standard
+    buildCommand: pnpm install && pnpm build:deploy
+    startCommand: node packages/cli/bin/n8n
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_OPTIONS
+        value: --max-old-space-size=2048
+      - key: N8N_EDITOR_BASE_URL
+        fromService:
+          type: web
+          name: n8n
+          property: renderUrl
+      - key: WEBHOOK_URL
+        fromService:
+          type: web
+          name: n8n
+          property: renderUrl
+      - key: DB_TYPE
+        value: sqlite
+      - key: DB_SQLITE_PATH
+        value: /data/database.sqlite
+      - key: GENERIC_OAUTH_ENABLED
+        value: "false"
+      - key: N8N_SECURE_COOKIE
+        value: "true"
+      - key: N8N_ENCRYPTION_KEY
+        sync: false
+    disk:
+      - mountPath: /data
+        sizeGB: 10
+    healthCheckPath: /api/v1/health
+    numInstances: 1
+    autoDeploy: true
