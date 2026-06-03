@@ -31,8 +31,9 @@ services:
       - key: N8N_ENCRYPTION_KEY
         sync: false
     disk:
-      - mountPath: /data
-        sizeGB: 10
+      name: n8n-data
+      mountPath: /data
+      sizeGB: 10
     healthCheckPath: /api/v1/health
     numInstances: 1
     autoDeploy: true
